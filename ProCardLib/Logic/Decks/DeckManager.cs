@@ -24,6 +24,15 @@ namespace ProCardLib.Logic.Decks
             deck.Add(card);
         }
 
+        public void Shuffle(Deck deck)
+        {            
+            for (var i = 0; i <= deck.Count - 1; i++)
+            {
+                var randomCard = Helpers.GetRandomCardIndex(deck);
+                Helpers.SwapCards(deck, i, randomCard);
+            }
+        }
+
         public override string ToString()
         {
             return base.ToString();
