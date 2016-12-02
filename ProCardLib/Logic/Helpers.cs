@@ -30,5 +30,27 @@ namespace ProCardLib.Logic
             }
             Console.WriteLine(String.Format("Shuffle {0} End", deck.Name));
         }
+
+        public static void DealCardToTopOf(Deck sourceDeck, int sourceIndex, Deck destinationDeck)
+        {
+            destinationDeck.Insert(0,sourceDeck[sourceIndex]);
+            RemoveCard(sourceDeck, sourceIndex);
+        }
+        public static void DealCardToBottomOf(Deck sourceDeck, int sourceIndex, Deck destinationDeck)
+        {
+            destinationDeck.Add(sourceDeck[sourceIndex]);
+            RemoveCard(sourceDeck, sourceIndex);          
+        }
+
+        public static void DealCardToPositionIn(Deck sourceDeck, int sourceIndex, Deck destinationDeck, int destinationIndex)
+        {
+            destinationDeck.Insert(destinationIndex,sourceDeck[sourceIndex]);
+            RemoveCard(sourceDeck, sourceIndex);          
+        }
+
+        public static void RemoveCard(Deck deck, int index)
+        {
+            deck.Remove(deck[index]);
+        }
     }
 }

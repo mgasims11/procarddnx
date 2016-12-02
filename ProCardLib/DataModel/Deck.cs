@@ -13,11 +13,10 @@ namespace ProCardLib.DataModel
 
         public Int32 DeckId;
 
-        public Deck(int id, DeckOptions options, string name)
-        {
-            DeckId = id;    
-            Options = options;
+        public Deck(string name,DeckOptions options)
+        {            
             Name = name;
+            Options = options;         
         }
     }
 }
