@@ -7,23 +7,28 @@ namespace ProCardLib.Logic
     {
         public static int GetRandomCardIndex(Deck deck)
         {
-            Console.WriteLine(deck.Name + ": Get random card");
-            var random = new Random((int)DateTime.Now.Subtract(DateTime.MinValue).TotalMilliseconds);
-            return random.Next(deck.Count);
+            var seed = Guid.NewGuid().GetHashCode();
+            var random = new Random(seed);
+            var r = random.Next(deck.Count);
+            Console.WriteLine(String.Format("Get Random Index: Seed={0}, Number={1}",seed,r));
+            return r;
+
         }
         public static void SwapCards(Deck deck, int source, int destination)
         {
-            Console.WriteLine(deck.Name + ": Swap");
+            Console.WriteLine(String.Format("Swap {0}({1}) and {2}({3})",deck[source].ToString(), source, deck[destination].ToString(), destination));
             var tempCard = deck[destination];
             deck[destination] = deck[source];
             deck[source] = tempCard;
         }
         public static void Shuffle(Deck deck)
         {
+            Console.WriteLine(String.Format("Shuffle {0} Start", deck.Name));
             for (var i=0; i <= deck.Count - 1; i++)
             {
                 Helpers.SwapCards(deck, i, GetRandomCardIndex(deck));
             }
+            Console.WriteLine(String.Format("Shuffle {0} End", deck.Name));
         }
     }
 }
