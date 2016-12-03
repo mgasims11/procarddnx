@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace ProCardLib.DataModel
 {
@@ -17,6 +18,20 @@ namespace ProCardLib.DataModel
         {            
             Name = name;
             Options = options;         
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append(Name);
+            sb.Append(": ");
+
+            foreach(var card in this)
+            {
+                sb.Append(card.ToString(Options.CardDisplayFormat));
+                sb.Append(" ");
+            }
+            return sb.ToString();
         }
     }
 }

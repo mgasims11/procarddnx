@@ -12,7 +12,10 @@ namespace ProCardLibTest
         public void CreateDeck() 
         {
 
-            var dealerDeck = new Deck( "Dealer", new DeckOptions(52));
+            var dealerDeckOptions = new DeckOptions(52);
+            dealerDeckOptions.CardDisplayFormat = Card.Formats.ConciseLetter;
+            var dealerDeck = new Deck( "Dealer",dealerDeckOptions );
+
             var dealerDeckManager = new DeckManager();           
             dealerDeckManager.Fill(dealerDeck);
 
@@ -21,11 +24,11 @@ namespace ProCardLibTest
 
             Helpers.Shuffle(dealerDeck);
 
-
-            foreach (var card in dealerDeck)
-            {
-                Console.WriteLine(card.ToString(Card.Formats.Long));
-            }            
+            Console.WriteLine(dealerDeck.ToString());
+            // foreach (var card in dealerDeck)
+            // {
+            //     Console.WriteLine(card.ToString(Card.Formats.Long));
+            // }            
         }
     }
 }
