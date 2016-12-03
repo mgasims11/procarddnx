@@ -24,7 +24,7 @@ namespace ProCardLibTest
 
             foreach (var card in dealerDeck)
             {
-                Console.WriteLine(card.ToString());
+                Console.WriteLine(card.ToString(Card.Formats.Long));
             }            
         }
     }
