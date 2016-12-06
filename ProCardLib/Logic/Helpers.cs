@@ -43,7 +43,10 @@ namespace ProCardLib.Logic
 
         public static void DealCardToTopOf(Deck sourceDeck, int sourceIndex, Deck destinationDeck)
         {
-            destinationDeck.Insert(0,sourceDeck[sourceIndex]);
+            if (sourceDeck.Count > 0)
+                destinationDeck.Insert(0,sourceDeck[sourceIndex]);
+            else
+                destinationDeck.Add(sourceDeck[sourceIndex]);
             RemoveCard(sourceDeck, sourceIndex);
         }
         public static void DealCardToBottomOf(Deck sourceDeck, int sourceIndex, Deck destinationDeck)
@@ -66,6 +69,25 @@ namespace ProCardLib.Logic
         public static void Empty(Deck deck)
         {
             deck.Clear();
+        }
+
+        public static void AddDeckToTable(Table table, Deck deck)
+        {
+            table.Add(deck);
+        }
+
+        public static void AddDecksToTable(Table table, params Deck[] decks)
+        {            
+            ClearTable(table);
+            foreach(var deck in decks )
+            {
+                AddDeckToTable(table,deck);   
+            }
+        }
+
+        public static void ClearTable(Table table)
+        {
+            table.Clear();
         }
     }
 }

@@ -24,16 +24,16 @@ namespace ProCardLib.Engines
             this.DealerHand = new Deck("Dealer Hand",HandOptions);
             this.PlayerHand = new Deck("Player Hand",HandOptions);
 
-            this.Table = new Table(this.DealerDeck, this.DealerHand, this.PlayerHand);
+            this.Table = new Table();
+            Helpers.AddDecksToTable(this.Table, this.DealerDeck,this.DealerHand,this.PlayerHand);
 
-            Helpers.Fill(this.DealerDeck);
+            //Helpers.Fill(this.DealerDeck);
         }
 
         public void Deal()
         {
             Helpers.DealCardToTopOf(this.DealerDeck,0,this.DealerHand);
             Helpers.DealCardToTopOf(this.DealerDeck,0,this.PlayerHand); 
-
         }
 
         public void Play() 
