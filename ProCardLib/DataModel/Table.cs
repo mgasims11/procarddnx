@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace ProCardLib.DataModel
 {
@@ -9,9 +10,19 @@ namespace ProCardLib.DataModel
     {
         public List<Deck> Decks { get; set; }
 
-        public Table()
+        public Table(params Deck[] decks)
         {
-            Decks = new List<Deck>();
+            Decks = decks.ToList<Deck>();
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            foreach(var deck in Decks)
+            {
+                sb.AppendLine(deck.ToString());
+            }
+            return sb.ToString();
         }
     }
 }

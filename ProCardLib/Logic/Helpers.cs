@@ -21,6 +21,16 @@ namespace ProCardLib.Logic
             deck[destination] = deck[source];
             deck[source] = tempCard;
         }
+        public static void Fill(Deck deck)
+        {
+             for(var suit = 1; suit <= 4 && deck.Count < deck.Options.MaxCards; suit++)
+             {
+                 for (var rank = 1; rank <= 13 && deck.Count < deck.Options.MaxCards; rank++)
+                 {
+                     deck.Add(new Card((Ranks)rank, (Suits)suit, Orientations.FaceDown, deck));                    
+                 }
+             }
+         }         
         public static void Shuffle(Deck deck)
         {
             Console.WriteLine(String.Format("Shuffle {0} Start", deck.Name));
@@ -51,6 +61,11 @@ namespace ProCardLib.Logic
         public static void RemoveCard(Deck deck, int index)
         {
             deck.Remove(deck[index]);
+        }
+
+        public static void Empty(Deck deck)
+        {
+            deck.Clear();
         }
     }
 }

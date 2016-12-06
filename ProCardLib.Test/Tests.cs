@@ -1,8 +1,8 @@
 ﻿using System;
 using Xunit;
 using ProCardLib.DataModel;
-using ProCardLib.Logic.Decks;
 using ProCardLib.Logic;
+using ProCardLib.Engines;
 
 namespace ProCardLibTest
 {
@@ -10,25 +10,12 @@ namespace ProCardLibTest
     {
         [Fact]       
         public void CreateDeck() 
-        {
-
-            var dealerDeckOptions = new DeckOptions(52);
-            dealerDeckOptions.CardDisplayFormat = Card.Formats.ConciseLetter;
-            var dealerDeck = new Deck( "Dealer",dealerDeckOptions );
-
-            var dealerDeckManager = new DeckManager();           
-            dealerDeckManager.Fill(dealerDeck);
-
-            var myDeck = new Deck("Me", new DeckOptions(5));
-            var myDeckManager = new DeckManager();           
-
-            Helpers.Shuffle(dealerDeck);
-
-            Console.WriteLine(dealerDeck.ToString());
-            // foreach (var card in dealerDeck)
-            // {
-            //     Console.WriteLine(card.ToString(Card.Formats.Long));
-            // }            
+        { 
+            var game = new HighCardWins();
+            game.Initialize();
+            game.Deal();
+            Console.WriteLine(game.Table.ToString());
+            game.Play();
         }
     }
 }
