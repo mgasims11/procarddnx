@@ -29,7 +29,7 @@ namespace ProCardLib.DataModel
 
             foreach(var card in this)
             {
-                sb.Append(card.ToString(Options.CardDisplayFormat));
+                sb.Append(card.DisplayValue);
                 sb.Append(" ");
             }
             return sb.ToString();

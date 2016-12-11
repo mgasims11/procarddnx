@@ -27,7 +27,8 @@ namespace ProCardLib.Engines
             this.Table = new Table();
             Helpers.AddDecksToTable(this.Table, this.DealerDeck,this.DealerHand,this.PlayerHand);
 
-            //Helpers.Fill(this.DealerDeck);
+            Helpers.Fill(this.DealerDeck);
+            Helpers.Shuffle(this.DealerDeck);
         }
 
         public void Deal()

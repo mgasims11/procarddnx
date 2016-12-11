@@ -26,8 +26,8 @@ namespace ProCardLib.Logic
              for(var suit = 1; suit <= 4 && deck.Count < deck.Options.MaxCards; suit++)
              {
                  for (var rank = 1; rank <= 13 && deck.Count < deck.Options.MaxCards; rank++)
-                 {
-                     deck.Add(new Card((Ranks)rank, (Suits)suit, Orientations.FaceDown, deck));                    
+                 {                     
+                     deck.Add(new Card((Ranks)rank, (Suits)suit, Orientations.FaceDown, deck, (int)rank));
                  }
              }
          }         
