@@ -62,4 +62,5 @@
 "C:\data\procarddnx\ProCardLib\DataModel\Enums.cs"
 "C:\data\procarddnx\ProCardLib\DataModel\Table.cs"
 "C:\data\procarddnx\ProCardLib\Engines\HighCardWins.cs"
-"C:\data\procarddnx\ProCardLib\Logic\Helpers.cs"
+"C:\data\procarddnx\ProCardLib\Logic\TableManager.cs"
+"C:\data\procarddnx\ProCardLib\Logic\TableManagerEventArgs.cs"

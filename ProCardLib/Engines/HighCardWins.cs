@@ -9,6 +9,7 @@ namespace ProCardLib.Engines
     public class HighCardWins
     {
         public Table Table {get;set;}
+        public TableManager TableManager {get;set;}
         public Deck DealerDeck {get;set;}
         public Deck DealerHand {get;set;}
         public Deck PlayerHand;
@@ -25,16 +26,18 @@ namespace ProCardLib.Engines
             this.PlayerHand = new Deck("Player Hand",HandOptions);
 
             this.Table = new Table();
-            Helpers.AddDecksToTable(this.Table, this.DealerDeck,this.DealerHand,this.PlayerHand);
+            
+            this.TableManager = new TableManager() {Table = this.Table};
 
-            Helpers.Fill(this.DealerDeck);
-            Helpers.Shuffle(this.DealerDeck);
+            TableManager.AddDecksToTable(this.Table, this.DealerDeck,this.DealerHand,this.PlayerHand);
+            TableManager.Fill(this.DealerDeck);
+            TableManager.Shuffle(this.DealerDeck);
         }
 
         public void Deal()
         {
-            Helpers.DealCardToTopOf(this.DealerDeck,0,this.DealerHand);
-            Helpers.DealCardToTopOf(this.DealerDeck,0,this.PlayerHand); 
+            TableManager.DealCardToTopOf(this.DealerDeck,0,this.DealerHand);
+            TableManager.DealCardToTopOf(this.DealerDeck,0,this.PlayerHand); 
         }
 
         public void Play() 
