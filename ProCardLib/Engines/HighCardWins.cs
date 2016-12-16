@@ -19,11 +19,25 @@ namespace ProCardLib.Engines
         public void Initialize()
         {
             this.DealerDeckOptions = new DeckOptions(52) { CardDisplayFormat = Card.Formats.ConciseLetter };
-            this.HandOptions = new DeckOptions(1) { CardDisplayFormat = Card.Formats.ConciseLetter };           
+            this.HandDeckOptions = new DeckOptions(1) { CardDisplayFormat = Card.Formats.ConciseLetter };           
 
-            this.DealerDeck = new Deck("Dealer Deck",DealerDeckOptions);
-            this.DealerHand = new Deck("Dealer Hand",HandOptions);
-            this.PlayerHand = new Deck("Player Hand",HandOptions);
+            this.DealerDeck = new Deck()
+            {
+                DeckName = "Dealer Deck",
+                DeckOptions = DealerDeckOptions
+            };
+
+            this.DealerHand = new Deck()
+            {
+                DeckName = "Dealer Hand",
+                DeckOptions = HandDeckOptions
+            };
+
+            this.PlayerHand = new Deck()
+            {
+                DeckName = "Player Hand",
+                DeckOptions = HandDeckOptions
+            };
 
             this.Table = new Table();
             

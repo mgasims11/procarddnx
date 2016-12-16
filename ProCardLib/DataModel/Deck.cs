@@ -7,27 +7,25 @@ using System.Collections.ObjectModel;
 
 namespace ProCardLib.DataModel
 {
-    public class Deck : ObservableCollection<Card>
+    public class Deck
     {
-        public string Name {get;set;}
-
-        public DeckOptions Options {get; set;}
-
-        public Int32 DeckId;
-
-        public Deck(string name,DeckOptions options)
+        public Guid DeckId {get; protected set;}
+        public string DeckName {get; set;}
+        public List<Card> Cards {get; protected set;}
+        public DeckOptions Options {get; set;}                           
+        public Deck()
         {            
-            Name = name;
-            Options = options;         
+            this.Cards = new List<Card>();
+            this.DeckId = Guid.NewGuid();         
         }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append(Name);
+            sb.Append(DeckName);
             sb.Append(": ");
 
-            foreach(var card in this)
+            foreach(var card in this.Cards)
             {
                 sb.Append(card.DisplayValue);
                 sb.Append(" ");

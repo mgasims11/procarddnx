@@ -2,33 +2,44 @@ using System;
 using ProCardLib.DataModel;
 
 namespace ProCardLib.Logic
-{    
+{   
+
     public class TableEventArgs : EventArgs
     {
-        public Table Table {get;set;}
-        public TableEventArgs(Table table)
+        public Guid TableId {get;set;}
+        public TableEventArgs(Guid tableId)
         {
-            this.Table = table;    
+            this.TableId = tableId;    
         }
     }
     public class DeckEventArgs : EventArgs
     {
-        public Table Table {get;set;}
-        public Deck Deck {get;set;}
-        public DeckEventArgs(Table table, Deck deck)
+        public Guid DeckId {get;set;}
+        public DeckEventArgs(Guid deckId)
         {            
-            this.Table = table;
-            this.Deck = deck;
+            this.DeckId = deckId;
         }
     }
     public class CardEventArgs : EventArgs
     {
+        public Guid DeckId {get;set;}
+        public Guid CardId {get;set;}
+        public CardEventArgs(Guid deckId, Guid cardId)
+        {
+            this.DeckId = deckId;
+            this.CardId = cardId;
+        }
+    }
+
+    public class CardMovementEventArgs : EventArgs
+    {
         public Deck Deck {get;set;}
         public Card Card {get;set;}
-        public CardEventArgs(Deck deck, Card card)
+        public CardMovementEventArgs(Deck deck, Card card)
         {
             this.Deck = deck;
             this.Card = card;
         }
     }
+
 }

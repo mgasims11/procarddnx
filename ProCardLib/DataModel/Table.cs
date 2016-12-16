@@ -8,12 +8,20 @@ using System.Linq;
 
 namespace ProCardLib.DataModel
 {
-    public class Table : Dictionary<string,Deck>
+    public class Table
     {
+        public Guid TableId {get; protected set;}
+        public string TableName {get;}
+        public List<Deck> Decks {get; protected set;}
+        public Table()
+        {
+            this.Decks = new List<Deck>();
+            this.TableId = Guid.NewGuid();        
+        }
         public override string ToString()
         {
             var sb = new StringBuilder();
-            foreach(var deck in this)
+            foreach(var deck in this.Decks)
             {
                 sb.AppendLine(deck.ToString());
             }

@@ -7,7 +7,6 @@ namespace ProCardLib.DataModel
 {
     public class Card : CardBase
     {
-
         string[] _cardChars = {"A","2","3","4","5","6","7","8","9","10","J","Q","K","J","J","J"};
         public enum Formats
         {
@@ -20,15 +19,23 @@ namespace ProCardLib.DataModel
             Letter,
             UnicodeSymbol
         } 
+        private Ranks _rank;
+        public Ranks Rank
+        {
+            get { return _rank;}
+            set { _rank = value; base.DisplayValue = GetDisplayValue(this);} 
+        }
+        private Suits _suit;
+        public Suits Suit        
+        {
+            get { return _suit;}
+            set { _suit = value; base.DisplayValue = GetDisplayValue(this);} 
+        }
 
-        public Ranks Rank { get; set; }
-        public Suits Suit { get; set; }
-
-        public Card(Ranks rank, Suits suit, Orientations orientation, Deck deck, int value) : base(orientation, deck, value)
-        {        
-            Rank = rank;
-            Suit = suit;
-            base.DisplayValue = GetDisplayValue(this); 
+        public Card(Ranks rank, Suits suit, Orientations orientation, Deck deck, int value)
+        {      
+            this.Rank = rank;
+            this.Suit = suit;
         }
 
         private string GetDisplayValue(Card card)

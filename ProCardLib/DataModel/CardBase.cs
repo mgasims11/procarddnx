@@ -7,15 +7,14 @@ namespace ProCardLib.DataModel
 {
     public class CardBase
     {
+        public Guid CardId {get; private set;}
         public Orientations Orientation { get; set; }
-        public Int32 OriginatingDeckId { get; set; }
+        public Guid HomeDeckId { get; set; }
         public string DisplayValue { get; set; }
         public int Value {get;set;}
-        public CardBase(Orientations orientation, Deck deck, int value)
+        public CardBase()
         {
-            Orientation = orientation;
-            OriginatingDeckId = deck.DeckId;
-            Value = value;
+            this.CardId = Guid.NewGuid();
         }
 
         public override string ToString()
