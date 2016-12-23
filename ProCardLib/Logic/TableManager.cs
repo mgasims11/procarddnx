@@ -25,31 +25,40 @@ namespace ProCardLib.Logic
         public Table Table {get;set;}
         public void ClearTable(Table table)
         {
-            OnTableClearing(this,new TableEventArgs(table.TableId));
+            if (this.OnTableClearing != null)
+                this.OnTableClearing(this,new TableEventArgs(table.TableId));
             table.Decks.Clear();
-            OnTableCleared(this,new TableEventArgs(table.TableId));
+            if (this.OnTableCleared != null)
+                this.OnTableCleared(this,new TableEventArgs(table.TableId));
         }
         public void AddDeckToTable(Table table, Deck deck)
         {
-            OnDeckAddingToTable(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckAddingToTable != null)
+                this.OnDeckAddingToTable(this, new DeckEventArgs(deck.DeckId));
             table.Decks.Add(deck);
-            OnDeckAddedToTable(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckAddedToTable != null)
+                this.OnDeckAddedToTable(this, new DeckEventArgs(deck.DeckId));
         }
         public void RemoveDeckFromTable(Table table, Deck deck)
         {
-            OnDeckBeingRemovedFromTable(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckBeingRemovedFromTable != null)
+                this.OnDeckBeingRemovedFromTable(this, new DeckEventArgs(deck.DeckId));
             table.Decks.Add(deck);
-            OnDeckRemovedFromTable(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckRemovedFromTable != null)
+                this.OnDeckRemovedFromTable(this, new DeckEventArgs(deck.DeckId));
         }
         public void ClearDeck(Deck deck)
         {
-            OnDeckClearing(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckClearing != null)
+                this.OnDeckClearing(this, new DeckEventArgs(deck.DeckId));
             deck.Cards.Clear();
-            OnDeckCleared(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckCleared != null)
+                this.OnDeckCleared(this, new DeckEventArgs(deck.DeckId));
         }
         public void FillDeck(Deck deck)
         {
-            OnDeckFilling(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckFilling != null)
+                this.OnDeckFilling(this, new DeckEventArgs(deck.DeckId));
             for(var suit = 1; suit <= 4 && deck.Cards.Count < deck.Options.MaxCards; suit++)
             {
                 for (var rank = 1; rank <= 13 && deck.Cards.Count < deck.Options.MaxCards; rank++)
@@ -57,16 +66,19 @@ namespace ProCardLib.Logic
                     deck.Cards.Add(new Card((Ranks)rank, (Suits)suit, Orientations.FaceDown, deck, (int)rank));
                 }
             }
-            OnDeckFilled(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckFilled != null)
+                this.OnDeckFilled(this, new DeckEventArgs(deck.DeckId));
          }         
         public void Shuffle(Deck deck)
         {
-            OnDeckShuffling(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckShuffling != null)
+                OnDeckShuffling(this, new DeckEventArgs(deck.DeckId));
             for (var i=0; i <= deck.Cards.Count - 1; i++)
             {
                 SwapCards(deck, i, GetRandomCardIndex(deck));
             }
-            OnDeckShuffled(this, new DeckEventArgs(deck.DeckId));
+            if (this.OnDeckShuffling != null)
+                OnDeckShuffled(this, new DeckEventArgs(deck.DeckId));
         }
 
         public int GetRandomCardIndex(Deck deck)

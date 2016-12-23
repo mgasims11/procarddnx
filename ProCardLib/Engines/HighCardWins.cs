@@ -14,7 +14,7 @@ namespace ProCardLib.Engines
         public Deck DealerHand {get;set;}
         public Deck PlayerHand;
         private DeckOptions DealerDeckOptions;
-        private DeckOptions HandOptions;
+        private DeckOptions HandDeckOptions;
       
         public void Initialize()
         {
@@ -24,27 +24,29 @@ namespace ProCardLib.Engines
             this.DealerDeck = new Deck()
             {
                 DeckName = "Dealer Deck",
-                DeckOptions = DealerDeckOptions
+                Options = DealerDeckOptions
             };
 
             this.DealerHand = new Deck()
             {
                 DeckName = "Dealer Hand",
-                DeckOptions = HandDeckOptions
+                Options = HandDeckOptions
             };
 
             this.PlayerHand = new Deck()
             {
                 DeckName = "Player Hand",
-                DeckOptions = HandDeckOptions
+                Options = HandDeckOptions
             };
 
-            this.Table = new Table();
+            this.Table = new Table() {
+                
+            };
             
             this.TableManager = new TableManager() {Table = this.Table};
 
             TableManager.AddDecksToTable(this.Table, this.DealerDeck,this.DealerHand,this.PlayerHand);
-            TableManager.Fill(this.DealerDeck);
+            TableManager.FillDeck(this.DealerDeck);
             TableManager.Shuffle(this.DealerDeck);
         }
 
@@ -56,10 +58,10 @@ namespace ProCardLib.Engines
 
         public void Play() 
         {
-            if (this.DealerHand[0].Rank > this.PlayerHand[0].Rank)
+            if (this.DealerHand.Cards[0].Rank > this.PlayerHand.Cards[0].Rank)
                 Console.WriteLine("Dealer Wins");
                 else
-                    if (this.DealerHand[0].Rank < this.PlayerHand[0].Rank)
+                    if (this.DealerHand.Cards[0].Rank < this.PlayerHand.Cards[0].Rank)
                         Console.WriteLine("Player Wins");
                     else
                         Console.WriteLine("Tie!");

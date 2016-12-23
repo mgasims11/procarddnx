@@ -11,7 +11,7 @@ namespace ProCardLib.DataModel
     public class Table
     {
         public Guid TableId {get; protected set;}
-        public string TableName {get;}
+        public string TableName {get; protected set;}
         public List<Deck> Decks {get; protected set;}
         public Table()
         {
