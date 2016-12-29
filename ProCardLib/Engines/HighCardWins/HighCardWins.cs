@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ProCardLib.DataModel;
 using ProCardLib.Logic;
 namespace ProCardLib.Engines
@@ -44,7 +41,8 @@ namespace ProCardLib.Engines
             };
             
             this.TableManager = new TableManager() {Table = this.Table};
-
+            this.TableManager.OnCardAddedToDeck += this.OnCardAddedToDeck;
+            
             TableManager.AddDecksToTable(this.Table, this.DealerDeck,this.DealerHand,this.PlayerHand);
             TableManager.FillDeck(this.DealerDeck);
             TableManager.Shuffle(this.DealerDeck);
@@ -65,6 +63,11 @@ namespace ProCardLib.Engines
                         Console.WriteLine("Player Wins");
                     else
                         Console.WriteLine("Tie!");
+        }
+
+        private void OnCardAddedToDeck(object sender, CardEventArgs args)
+        {
+            
         }
     }        
 }

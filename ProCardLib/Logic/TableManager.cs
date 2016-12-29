@@ -1,6 +1,8 @@
 using System;
 using ProCardLib.DataModel;
 
+// 480 X 270
+
 namespace ProCardLib.Logic
 {    
     public class TableManager
