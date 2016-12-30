@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="HighWins.Views.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HighWins.Views"
+
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cal="http://www.caliburnproject.org"
+             Width="800px" Height="600px">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="80px"></RowDefinition>
+        </Grid.RowDefinitions>
+            <local:Table>
+                <local:Table.Decks>
+                    <x:Array Type="local:Deck">
+                        <local:Deck></local:Deck>
+                        <local:Deck></local:Deck>
+                    </x:Array>
+                </local:Table.Decks>
+            </local:Table>
+            
+            <Button  Width="75" Height="30" Margin="98,10,627,20" Grid.Row="1" Content="Deal">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <cal:ActionMessage MethodName="Deal" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+
+</UserControl>

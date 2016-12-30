@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\data\procarddnx\PokerMachine\PokerMachine.Win\HighWins\App.xaml
-51448233385
+4-1156045871
 
-11-771487970
+10273936649
 70-543688704
-Card.xaml;MainWindow.xaml;Deck.xaml;Table.xaml;ShellView.xaml;
+Views\Card.xaml;Views\MainWindowView.xaml;Views\Deck.xaml;Views\Table.xaml;
 
 False
 

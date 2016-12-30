@@ -5,19 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using HighWins.ViewModels;
 
 namespace HighWins
 {
-    public class HelloBootstrapper : BootstrapperBase
+    public class Bootstrapper : BootstrapperBase
     {
-        public HelloBootstrapper()
+        public Bootstrapper()
         {
             Initialize();
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewFor<ShellViewModel>();
+            DisplayRootViewFor<MainWindowViewModel>();            
         }
     }
 }
